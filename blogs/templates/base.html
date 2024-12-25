@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Task2{% endblock %}</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header/Nav */
+        header {
+            background: linear-gradient(135deg, #0077ff, #3d5a80);
+            color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        nav a:hover {
+            background: #0077ff;
+            color: #000;
+        }
+
+        .user-info {
+            font-weight: bold;
+            color: #f8f9fa;
+            font-size: 1.1rem;
+        }
+
+        /* Main Content */
+        main {
+            margin: 30px auto;
+            max-width: 1100px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            color: #0077ff;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #3d5a80;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 15px;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #0077ff;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 15px 0;
+            background: #3d5a80;
+            color: #fff;
+            margin-top: 30px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Task2 Dashboard</h1>
+        <nav>
+            {% if user.is_authenticated %}
+                <span class="user-info">Hello, {{ user.username }}!</span>
+            {% else %}
+                <a href="/task2/accounts/login/">Login</a>
+                <a href="/task2/register/">Register</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section>
+            {% block content %}
+                <h2>Welcome to Task2!</h2>
+                <p>Organize your tasks efficiently with Task2. Stay productive, stay organized.</p>
+                <a href="/task2/accounts/login/" class="btn">Get Started</a>
+            {% endblock %}
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 Task2 App | Designed for Task Management | All Rights Reserved
+    </footer>
+</body>
+</html>
